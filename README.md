@@ -7,3 +7,6 @@ Lý giải cho ý tưởng xây dựng ứng dụng trên của tôi đó là kh
     - Việc tìm kiếm hình ảnh theo chủ đề để tải về và clone lại có thể rất mất thời gian, sẽ rất tuyệt nếu ta có thể nhập vào nội dung cần tải ví dụ như là 'chó','mèo' và click, một folder với hàng trăm, hàng nghìn ảnh sẽ có sẵn trên máy tính cá nhân của bạn.
     - Và phần mất nhiều thời gian nhất có lẽ là chỉnh sửa ảnh để bạn có thể có một hình ảnh sắc nét in trên sản phẩm của mình. Vào ngày đó, do kĩ năng còn kém nên có khi tôi đã mất cả ngày trời mà chỉ có thể chỉnh sửa khoảng chục cái ảnh, và tất nhiên, không 1 công ty nào thuê bạn về để có một suất kém đáng kinh ngạc như thế cả.
 4. Những điều trên khiến cho 1 ý tưởng về tận dụng sức mạnh của công nghệ để tự động hóa các quy trình, giúp cho bạn làm việc dễ dàng hơn với vài ba thao tác, tăng hiệu suất công việc, doanh nghiệp có thể giảm thiểu sử dụng nguồn tài nguyên.
+
+
+5. 
