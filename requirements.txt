@@ -1,2 +1,5 @@
 numpy
 requests
+bs4
+tqdm
+rmbg

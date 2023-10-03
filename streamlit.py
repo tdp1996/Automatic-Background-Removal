@@ -1,7 +1,7 @@
 import os
 import streamlit as st
 from PIL import Image
-from cutout_API import remove_background
+from rmbg import remove_background
 import tempfile
 import base64
 
@@ -24,34 +24,34 @@ if images is not None:
         st.write(f"Image {i+1} uploaded successfully!")
 
 output_folder = 'data_loader'
-API_key = 'b08c88e467cb4c1581c7f723bb09525c'
-remove_background(image_folder, output_folder,API_key)
-# Xử lý các ảnh đã được tải lên
-if os.path.exists(image_folder):
-    image_files = os.listdir(image_folder)
-    for i,image_file in enumerate(image_files):
-        # Đọc ảnh từ thư mục
-        image_path = os.path.join(image_folder, image_file)
-        img = Image.open(image_path)
-        # Tạo tệp tạm thời
-        with tempfile.NamedTemporaryFile(suffix='.png', delete=False) as temp_file:
-            temp_file_path = temp_file.name
-            img.save(temp_file_path)
+
+# remove_background(image_folder, output_folder)
+# # Xử lý các ảnh đã được tải lên
+# if os.path.exists(image_folder):
+#     image_files = os.listdir(image_folder)
+#     for i,image_file in enumerate(image_files):
+#         # Đọc ảnh từ thư mục
+#         image_path = os.path.join(image_folder, image_file)
+#         img = Image.open(image_path)
+#         # Tạo tệp tạm thời
+#         with tempfile.NamedTemporaryFile(suffix='.png', delete=False) as temp_file:
+#             temp_file_path = temp_file.name
+#             img.save(temp_file_path)
         
-        # Hiển thị ảnh và liên kết tải xuống
-        st.image(img, caption=f'Edited Image {i+1}')
+#         # Hiển thị ảnh và liên kết tải xuống
+#         st.image(img, caption=f'Edited Image {i+1}')
         
-        # Đọc dữ liệu từ tệp tạm thời
-        with open(temp_file_path, "rb") as file:
-            img_data = file.read()
+#         # Đọc dữ liệu từ tệp tạm thời
+#         with open(temp_file_path, "rb") as file:
+#             img_data = file.read()
         
-        # Mã hóa dữ liệu ảnh thành base64
-        img_data_base64 = base64.b64encode(img_data).decode("utf-8")
+#         # Mã hóa dữ liệu ảnh thành base64
+#         img_data_base64 = base64.b64encode(img_data).decode("utf-8")
         
-        # Tạo liên kết tải xuống với dữ liệu base64
-        download_link = f'<a href="data:image/png;base64,{img_data_base64}" download="Edited Image {i+1}.png">Download image</a>'
+#         # Tạo liên kết tải xuống với dữ liệu base64
+#         download_link = f'<a href="data:image/png;base64,{img_data_base64}" download="Edited Image {i+1}.png">Download image</a>'
         
-        # Hiển thị liên kết tải xuống
-        st.markdown(download_link, unsafe_allow_html=True)
+#         # Hiển thị liên kết tải xuống
+#         st.markdown(download_link, unsafe_allow_html=True)
 
 
