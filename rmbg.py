@@ -23,7 +23,7 @@ def remove_background(input_path, output_path):
         output_img.save(output_file)
 
 
-# if __name__ == "__main__":
-#     input_path = 'data'
-#     output_path = 'output'
-#     remove_background(input_path, output_path)
+if __name__ == "__main__":
+    input_path = 'uploads'
+    output_path = 'output'
+    remove_background(input_path, output_path)
