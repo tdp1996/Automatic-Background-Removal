@@ -22,8 +22,3 @@ def remove_background(input_path, output_path):
         # Save the output image
         output_img.save(output_file)
 
-
-if __name__ == "__main__":
-    input_path = 'uploads'
-    output_path = 'output'
-    remove_background(input_path, output_path)
