@@ -13,7 +13,6 @@ bin-release/
 *.ipa
 *.apk
 output
-data
 .pyc
 remove_background.py
 call_API.py
