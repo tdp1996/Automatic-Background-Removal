@@ -12,14 +12,12 @@ bin-release/
 *.air
 *.ipa
 *.apk
-output
-.pyc
-remove_background.py
-call_API.py
-uploads
-data_loader
-_pycache_
 
 # Project files, i.e. `.project`, `.actionScriptProperties` and `.flexProperties`
 # should NOT be excluded as they contain compiler settings and other important
 # information for Eclipse / Flash Builder.
+Data/
+.txt
+dummy
+*.json
+
