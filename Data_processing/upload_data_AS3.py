@@ -21,7 +21,7 @@ if __name__ == "__main__":
     aws_region = "ap-southeast-2"
 
     # Set the local folder path and S3 bucket name
-    local_folder_path = "jpg"
+    local_folder_path = "test_data"
     s3_bucket_name = "tdp-dataset"
 
     # Configure AWS credentials
