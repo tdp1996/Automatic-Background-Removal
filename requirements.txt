@@ -1,7 +1,7 @@
 numpy
 requests
-bs4
 tqdm
 streamlit
 rembg
-robo3
+boto3
+awscli

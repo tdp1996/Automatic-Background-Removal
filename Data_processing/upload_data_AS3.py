@@ -1,36 +1,39 @@
-from split_images_by_format import split_data
-
 import boto3
-from botocore.exceptions import NoCredentialsError
+import os
+import json
 
-def upload_to_s3(local_path, bucket_name):
+def upload_folder_to_s3(config_file, local_folder, s3_prefix):
     # Create an S3 client
-    s3 = boto3.client('s3')
+    aws_access_key_id, aws_secret_access_key, aws_region, bucket_name = load_aws_credentials(config_file)
 
-    try:
-        # Upload the files
-        s3.upload_file(local_path, bucket_name, local_path)
-        print(f"Successfully uploaded {local_path} to {bucket_name}")
-    except NoCredentialsError:
-        print("Credentials not available or not valid.")
+    # Create an S3 client
+    s3 = boto3.client('s3', aws_access_key_id=aws_access_key_id, aws_secret_access_key=aws_secret_access_key, region_name=aws_region)
+
+    # Iterate through each file in the local folder
+    for root, dirs, files in os.walk(local_folder):
+        for file in files:
+            local_file_path = os.path.join(root, file)
+            s3_key = os.path.join(s3_prefix, os.path.relpath(local_file_path, local_folder)).replace("\\", "/")
+
+            try:
+                # Upload the file to S3
+                s3.upload_file(local_file_path, bucket_name, s3_key)
+                print(f"Upload successful: {local_file_path} to s3://{bucket_name}/{s3_key}")
+            except Exception as e:
+                print(f"Error uploading {local_file_path}: {e}")
+
+def load_aws_credentials(file_path):
+    with open(file_path, 'r') as config_file:
+        config = json.load(config_file)
+        return config['aws_access_key_id'], config['aws_secret_access_key'], config['aws_region'], config['aws_bucket']
+    
 
 if __name__ == "__main__":
-    # Set your AWS credentials and region (you can also set them using aws configure)
-    aws_access_key_id = "AKIAVXQ6TRPE6R7QI2NS"
-    aws_secret_access_key = "9rvKSdfuxXZHdVSjVKZOOogZ8UJMoEit503uqJ8P"
-    aws_region = "ap-southeast-2"
+    # Replace these values with your actual AWS credentials and S3 information
 
-    # Set the local folder path and S3 bucket name
-    local_folder_path = "test_data"
-    s3_bucket_name = "tdp-dataset"
+    config_file="/Users/admin/Desktop/Automatic-Batch-Editing/Data_processing/config.json"
+    local_folder_path = "/Users/admin/Desktop/Automatic-Batch-Editing/Data"  # Replace with the path to your local folder
+    s3_prefix = "user_data"  # Replace with the desired prefix in your S3 bucket
 
-    # Configure AWS credentials
-    boto3.setup_default_session(
-        aws_access_key_id=aws_access_key_id,
-        aws_secret_access_key=aws_secret_access_key,
-        region_name=aws_region
-    )
-
-    # Upload to S3
-    upload_to_s3(local_folder_path, s3_bucket_name)
-
+    # Upload the folder to S3
+    upload_folder_to_s3(config_file, local_folder_path, s3_prefix)
