@@ -5,3 +5,6 @@ streamlit
 rembg
 boto3
 awscli
+rembg[cli]
+onnxruntime
+onnxruntime-gpu
