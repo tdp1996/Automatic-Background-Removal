@@ -12,6 +12,8 @@ upload_gd.py
 test.py
 *.json
 .txt
+*.pyc
+
 
 # Executables
 *.swf

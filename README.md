@@ -1,4 +1,4 @@
-                                    #AUTOMATIC BACKGROUND REMOVAL#
+                                #AUTOMATIC BACKGROUND REMOVAL#
 
 
 ## 1. INTRODUCTION 
@@ -35,7 +35,3 @@
 * In 'rmbg.py' file, replace 'model_path' with the direct path to your custom model. If you store your model on github, replace this " _prepare_model('https://github.com/tdp1996/model.git')" with your github path.
 * Run the application: streamlit run streamlit  
 * Open your browser and go to http://localhost:5000
-
-
-
-
