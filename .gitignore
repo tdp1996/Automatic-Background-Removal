@@ -6,6 +6,12 @@ bin-release/
 
 # Other files and folders
 .settings/
+*.egg-info
+split_images_by_format.py
+upload_gd.py
+test.py
+*.json
+.txt
 
 # Executables
 *.swf
@@ -17,7 +23,6 @@ bin-release/
 # should NOT be excluded as they contain compiler settings and other important
 # information for Eclipse / Flash Builder.
 Data/
-.txt
 dummy
-*.json
+user_data/
 

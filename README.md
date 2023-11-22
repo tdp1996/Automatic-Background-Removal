@@ -1,12 +1,41 @@
-                                Introdution
-1. Vào năm 2021, tôi làm cho một công ty chuyên bán các sản phẩm POD trên các sàn thương mại điện tử quốc tế như là Amazon, Etsy, Ebay...etc
-Công việc chính của tôi là clone các sản phẩm từ thiết kế có sẵn, thi thoảng có thể tự thiết kế sản phẩm dựa trên ý tưởng có sẵn hoặc tự sáng tạo. Sau đó, các sản phẩm sẽ được ghép lên áo, cốc, túi, rèm, blanket... và đăng lên bán trên các sàn thương mại điện tử.
-2. Công việc cũng không yêu cầu quá nhiều kĩ năng, bạn cần có một chút kiến thức về design và tôi nghĩ thêm một sự yêu thích về kinh doanh nữa, cùng với đó là sự chịu khó, ham học hỏi, tìm tòi. Với những điều đó thì tôi nghĩ sau một thời gian làm, bạn cũng có thể tự bắt tay vào triển khai một shop buôn bán nhỏ trên sàn TMĐT của chính mình.
-3. Và đây là phần chính mà khiến tôi có ý tưởng để xây dựng ứng dụng này,một ứng dụng giúp người sử dụng có thể tự động chỉnh sửa ảnh hàng loạt theo yêu cầu như là xóa nền, render hình ảnh, tạo hình ảnh, tự động ghép ảnh ... chỉ bằng vài ba câu lệnh hoặc vài cú click chuột.
-Lý giải cho ý tưởng xây dựng ứng dụng trên của tôi đó là khi còn làm việc tôi gặp những khó khăn như sau :
-    - Việc tìm kiếm hình ảnh theo chủ đề để tải về và clone lại có thể rất mất thời gian, sẽ rất tuyệt nếu ta có thể nhập vào nội dung cần tải ví dụ như là 'chó','mèo' và click, một folder với hàng trăm, hàng nghìn ảnh sẽ có sẵn trên máy tính cá nhân của bạn.
-    - Và phần mất nhiều thời gian nhất có lẽ là chỉnh sửa ảnh để bạn có thể có một hình ảnh sắc nét in trên sản phẩm của mình. Vào ngày đó, do kĩ năng còn kém nên có khi tôi đã mất cả ngày trời mà chỉ có thể chỉnh sửa khoảng chục cái ảnh, và tất nhiên, không 1 công ty nào thuê bạn về để có một suất kém đáng kinh ngạc như thế cả.
-4. Những điều trên khiến cho 1 ý tưởng về tận dụng sức mạnh của công nghệ để tự động hóa các quy trình, giúp cho bạn làm việc dễ dàng hơn với vài ba thao tác, tăng hiệu suất công việc, doanh nghiệp có thể giảm thiểu sử dụng nguồn tài nguyên.
+                                    #AUTOMATIC BACKGROUND REMOVAL#
 
 
-5. 
+## 1. INTRODUCTION 
+    - The project aims to design an application for automating background removal image process. Users can simple upload their images and then choose their desire result to download.
+    Project Components:
+    U-2-Net Model Training:
+    # We integrate the U-2-Net model training with personal datasets and utilize the rembg tool.
+    # U-2-Net is initially trained on the DUST_TR dataset, consisting of images and masks. View examples:
+        ![Alt text](image.png) ![Alt text](image-1.png)
+    
+    # We continue training with personal datasets structured as follows:            
+     ![Alt text](image-2.png) ![Alt text](image-3.png)
+
+    # The trained model, combined with the rembg tool, is used for automatic image background removal.
+    
+    References:
+    [U-2-Net](https://github.com/xuebinqin/U-2-Net.git)
+    [rembg](https://github.com/danielgatis/rembg.git)
+    [Train your custom model](https://github.com/danielgatis/rembg/issues/193#issuecomment-1055534289) 
+
+## 2. FEATURES
+
+ **Remove Background:** Automatically removes the background from uploaded images.
+
+
+## 3. INSTALLATION
+
+* Clone the repository: https://github.com/tdp1996/Automatic-Batch-Editing.git
+* Install dependencies: `pip install -r requirements.txt`
+
+
+## 4. USAGE
+
+* In 'rmbg.py' file, replace 'model_path' with the direct path to your custom model. If you store your model on github, replace this " _prepare_model('https://github.com/tdp1996/model.git')" with your github path.
+* Run the application: streamlit run streamlit  
+* Open your browser and go to http://localhost:5000
+
+
+
+

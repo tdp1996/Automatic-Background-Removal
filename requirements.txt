@@ -5,3 +5,6 @@ streamlit
 rembg
 boto3
 awscli
+python-dotenv
+pytest
+pydrive
