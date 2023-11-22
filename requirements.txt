@@ -5,3 +5,7 @@ streamlit
 rembg
 boto3
 awscli
+python-dotenv
+onnx
+onnxruntime
+rembg[cli]

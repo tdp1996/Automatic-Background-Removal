@@ -13,6 +13,7 @@ test.py
 *.json
 .txt
 *.pyc
+*.env
 
 
 # Executables
