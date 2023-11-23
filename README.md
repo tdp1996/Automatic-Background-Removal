@@ -9,8 +9,8 @@ The project aims to design an application for automating background removal imag
 #### U-2-Net is initially trained on the DUST_TR dataset, consisting of images and masks. View examples:
 ![Alt text](image.png) ![Alt text](image-1.png)
     
-#### We continue training with personal datasets structured as follows:            
-![Alt text](my_image1.jpg)![Alt text](my_label1.png)
+    # We continue training with personal datasets structured as follows:            
+     ![Alt text](image-2.png) ![Alt text](image-3.png)
 
 #### The trained model, combined with the rembg tool, is used for automatic image background removal.
     
