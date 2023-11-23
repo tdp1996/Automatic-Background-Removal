@@ -4,20 +4,17 @@
 ## 1. Introduction 
 The project aims to design an application for automating background removal image process. Users can simply upload their images and then choose their desired result to download.
 
-### Project Components: We integrate the U-2-Net model training with personal datasets and utilize the rembg tool.
+### Project Components: [U-2-Net](https://github.com/xuebinqin/U-2-Net.git), [rembg](https://github.com/danielgatis/rembg.git)
+### We integrate the U-2-Net model training with personal datasets and utilize the rembg tool.
 
 #### U-2-Net is initially trained on the DUST_TR dataset, consisting of images and masks. View examples:
-![Alt text](image.png) ![Alt text](image-1.png)
+![Alt text](ILSVRC2012_test_00000022.jpg) ![Alt text](ILSVRC2012_test_00000022.png)
     
-    # We continue training with personal datasets structured as follows:            
-     ![Alt text](image-2.png) ![Alt text](image-3.png)
+#### We continue training with personal datasets structured as follows:            
+![Alt text](my_image1.jpg) ![Alt text](my_label1.png)
 
 #### The trained model, combined with the rembg tool, is used for automatic image background removal.
     
-#### References:
-[U-2-Net](https://github.com/xuebinqin/U-2-Net.git), 
-[rembg](https://github.com/danielgatis/rembg.git), 
-[Train your custom model](https://github.com/danielgatis/rembg/issues/193#issuecomment-1055534289) 
 
 ## 2. Features
 
@@ -37,6 +34,8 @@ You can upload your images and see the result.
 
 ## 5. Usage
  
-* Run the application: streamlit run streamlit
+* Run the application: streamlit run streamlit.py
   
 * Open your browser and go to http://localhost:5000
+
+## References: [Train your custom model](https://github.com/danielgatis/rembg/issues/193#issuecomment-1055534289) 
