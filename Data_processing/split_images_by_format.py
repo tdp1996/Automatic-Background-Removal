@@ -26,8 +26,8 @@ def split_data(input_folder, jpg_folder, png_folder):
 
 if __name__ == "__main__":
 # Change the paths to your input folder and define the output folders for jpg and png images
-    input_folder_path = 'Data/TDP_Data'
-    jpg_output_folder_path = 'Data/TDP_train_data/TDP_IMAGES'
-    png_output_folder_path = 'Data/TDP_train_data/TDP_MASKS'
+    input_folder_path = 'Raw_Images'
+    jpg_output_folder_path = 'Data/TDP_test_data/TDP_IMAGES'
+    png_output_folder_path = 'Data/TDP_test_data/TDP_MASKS'
 
     split_data(input_folder_path, jpg_output_folder_path, png_output_folder_path)
