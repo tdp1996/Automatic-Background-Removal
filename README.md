@@ -48,5 +48,4 @@ You can upload your images and see the result.
 * rembg: https://github.com/danielgatis/rembg.git
 * Train your custom model: https://github.com/danielgatis/rembg/issues/193#issuecomment-1055534289
   
-## References: [Train your custom model](https://github.com/danielgatis/rembg/issues/193#issuecomment-1055534289) 
 
