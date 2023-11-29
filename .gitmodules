@@ -1,3 +1,3 @@
-[submodule "custom-U-2-Net"]
-	path = custom-U-2-Net
+[submodule "custom_U_2_Net"]
+	path = custom_U_2_Net
 	url = https://github.com/tdp1996/U-2-Net.git
