@@ -1,14 +1,15 @@
 import os
 import boto3
 from dotenv import load_dotenv
-load_dotenv()
+import streamlit as st
+# load_dotenv()
 
 def download_model(bucket_name, folder_prefix, local_folder):
 
     # Retrieve AWS credentials from environment variables
-    aws_access_key_id = os.environ.get('AWS_ACCESS_KEY_ID')
-    aws_secret_access_key = os.environ.get('AWS_SECRET_ACCESS_KEY')
-    aws_region = os.environ.get('AWS_REGION')
+    aws_access_key_id = st.secrets["AWS_ACCESS_KEY_ID"]
+    aws_secret_access_key = st.secrets["AWS_SECRET_ACCESS_KEY"]
+    aws_region = st.secrets["AWS_REGION"]
     # bucket_name = os.environ.get('AWS_BUCKET')
 
     # Create an S3 client
