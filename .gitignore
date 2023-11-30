@@ -7,15 +7,13 @@ bin-release/
 # Other files and folders
 .settings/
 *.egg-info
-*split_images_by_format.py
-upload_gd.py
 test.py
 *.json
 .txt
 *.pyc
 *.env
-data_processing/
 __pycache__
+Data_processing/
 
 
 
