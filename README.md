@@ -27,7 +27,7 @@ The trained model, combined with the rembg tool, is used for automatic image bac
 
 
 ## 3. Demo
-For a quick demo, please visit this website:
+For a quick demo, please visit this website: https://bradpt.streamlit.app/.
 You can upload your images and see the result.
 
 ## 4. Installation
