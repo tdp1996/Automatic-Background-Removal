@@ -15,6 +15,7 @@ test.py
 *.pyc
 *.env
 data_processing/
+__pycache__
 
 # Executables
 *.swf
