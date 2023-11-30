@@ -1,8 +1,18 @@
 import os
 import boto3
+from dotenv import load_dotenv
+load_dotenv()
 
 def download_model(bucket_name, folder_prefix, local_folder):
-    s3 = boto3.client('s3')
+
+    # Retrieve AWS credentials from environment variables
+    aws_access_key_id = os.environ.get('AWS_ACCESS_KEY_ID')
+    aws_secret_access_key = os.environ.get('AWS_SECRET_ACCESS_KEY')
+    aws_region = os.environ.get('AWS_REGION')
+    # bucket_name = os.environ.get('AWS_BUCKET')
+
+    # Create an S3 client
+    s3 = boto3.client('s3', aws_access_key_id=aws_access_key_id, aws_secret_access_key=aws_secret_access_key, region_name=aws_region)
 
     # List objects in the bucket with the specified prefix
     response = s3.list_objects(Bucket=bucket_name, Prefix=folder_prefix)
@@ -25,10 +35,3 @@ def download_model(bucket_name, folder_prefix, local_folder):
         print(f"No objects found with prefix: {folder_prefix}")
 
     return local_folder
-
-if __name__ == "__main__":
-    bucket_name = 'tdp-model'
-    folder_prefix = 'ABR_model'
-    local_folder = 'prepare_model/model'
-
-    download_model(bucket_name, folder_prefix, local_folder)
