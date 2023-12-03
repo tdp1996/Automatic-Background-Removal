@@ -5,6 +5,7 @@ bin-release/
 [Bb]in/
 
 # Other files and folders
+streatlit_dung.py
 .settings/
 *.egg-info
 test.py

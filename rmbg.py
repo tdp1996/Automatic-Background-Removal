@@ -1,32 +1,28 @@
 import os
 import subprocess
-from pathlib import Path
-from prepare_model.get_model import download_model
+from PIL import Image
+from prepare_model.download_model import download_model
+import io
 
-
-def remove_background(input_folder, output_folder):
+def remove_background(input_image):
     model_path = get_latest_model('prepare_model/model')
-    # List all files in the input folder
-    input_files = [f for f in os.listdir(input_folder) if os.path.isfile(os.path.join(input_folder, f))]
+    input_pil = Image.open(io.BytesIO(input_image))
 
-    # Create the output folder if it doesn't exist
-    os.makedirs(output_folder, exist_ok=True)
+    #Creat temporary files
+    output_path = "output.png"
+    input_path = "temp_input.png"
+    input_pil.save(input_path)
 
-    # Iterate through each input file
-    for input_file in input_files:
-        input_path = os.path.join(input_folder, input_file)
-        output_path = os.path.join(output_folder, input_file.replace('.png', '_output.png'))  # Adjust output file name as needed
+    command = f'rembg i -m u2net_custom -x \'{{"model_path": "{model_path}"}}\' "{input_path}" "{output_path}"'
+    subprocess.run(command, shell=True, check=True)
 
-        # Construct the command with double quotes around file paths
-        command = f'rembg i -m u2net_custom -x \'{{"model_path": "{model_path}"}}\' "{input_path}" "{output_path}"'
+    output_pil = Image.open(output_path)
 
-        try:
-            # Execute the command
-            subprocess.run(command, shell=True, check=True)
-            print(f"Processed: {input_file}")
-        except subprocess.CalledProcessError as e:
-            print(f"Error processing {input_file}: {e}")
+    # Clean up temporary files
+    os.remove(input_path)
+    os.remove(output_path)
 
+    return output_pil
 
 def get_latest_model(model_folder):
     model_folder= download_model('tdp-model','ABR_model','prepare_model/model')
@@ -34,6 +30,9 @@ def get_latest_model(model_folder):
     sorted_model_files = sorted(model_list, key=lambda x: int(x[len("ABR_version_"):-len(".onnx")]))
     latest_model = sorted_model_files[-1]
     return os.path.join(model_folder,latest_model)
+
+
+
 
 
 
