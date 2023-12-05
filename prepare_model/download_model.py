@@ -1,38 +1,19 @@
+import requests
 import os
-import boto3
-from dotenv import load_dotenv
-import streamlit as st
-load_dotenv()
 
+def download_model(s3_object_url, model_folder):
+    # Create the target directory if it doesn't exist
+    if not os.path.exists(model_folder):
+        os.makedirs(model_folder)
+    s3_object_response = requests.get(s3_object_url)
 
-def download_model(bucket_name, folder_prefix, local_folder):
-    # Retrieve AWS credentials from environment variables
-    aws_access_key_id = st.secrets["AWS_ACCESS_KEY_ID"]
-    aws_secret_access_key = st.secrets["AWS_SECRET_ACCESS_KEY"]
-    aws_region = st.secrets["AWS_REGION"]
-
-    # Create an S3 client
-    s3 = boto3.client('s3', aws_access_key_id=aws_access_key_id, aws_secret_access_key=aws_secret_access_key, region_name=aws_region)
-
-    # List objects in the bucket with the specified prefix
-    response = s3.list_objects(Bucket=bucket_name, Prefix=folder_prefix)
-
-    # Check if 'Contents' key is present in the response
-    if 'Contents' in response:
-        objects = response['Contents']
-        
-        # Download each object
-        for obj in objects:
-            key = obj['Key']
-            local_path = os.path.join(local_folder, os.path.relpath(key, folder_prefix))
-
-            # Create local directories if they don't exist
-            os.makedirs(os.path.dirname(local_path), exist_ok=True)
-
-            # Download the object
-            s3.download_file(bucket_name, key, local_path)
+    if s3_object_response.status_code == 200:
+        file_name = s3_object_url.split("/")[-1]
+        model_path = os.path.join(model_folder, file_name)
+        if not os.path.isfile(model_path):
+            # save the model
+            with open(model_path, 'wb') as local_file:
+                local_file.write(s3_object_response.content)
     else:
-        print(f"No objects found with prefix: {folder_prefix}")
-
-    return local_folder
-
+        print(f"Download failed. Status code: {s3_object_response.status_code}")
+    return model_path

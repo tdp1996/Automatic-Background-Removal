@@ -2,9 +2,10 @@ import streamlit as st
 from rmbg import remove_background
 import base64
 import io
-
+from test import download_model
 
 def main():
+    model_path = download_model('https://tdp-model.s3.ap-southeast-2.amazonaws.com/ABR_model/ABR_version_1.onnx', 'prepare_model/model')
     st.title(':blue[A]:red[B]:green[R] :sunglasses:')
     with st.form("my-form", clear_on_submit=True):
         images = st.file_uploader("Upload your images", type=None, accept_multiple_files=True)
@@ -16,7 +17,7 @@ def main():
             file_content = uploaded_file.read()
 
             # Call the remove_background function with the raw content
-            edited_image = remove_background(file_content)
+            edited_image = remove_background(file_content,model_path)
 
             # Display the original and edited images
             col1_name = f'col1_{i}'
