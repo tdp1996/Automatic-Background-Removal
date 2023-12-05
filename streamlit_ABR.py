@@ -2,7 +2,7 @@ import streamlit as st
 from rmbg import remove_background
 import base64
 import io
-from test import download_model
+from prepare_model.download_model import download_model
 
 def main():
     model_path = download_model('https://tdp-model.s3.ap-southeast-2.amazonaws.com/ABR_model/ABR_version_1.onnx', 'prepare_model/model')
