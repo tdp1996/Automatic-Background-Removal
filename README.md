@@ -55,13 +55,10 @@ ABR is still a work in progress and in alpha. While it is slowly getting more to
 If you find a bug or have a feature request, please open an issue and provide detailed information.
 
 
-## 8. Authors and Contributors
-### Author
+## 8. Author
 * Name: [tdp1996](https://github.com/tdp1996/Automatic-Batch-Editing.git)
 * Email: phuongtd1107@gmail.com
-### Contributors
-* Name: [thanhvocam](https://github.com/thanhvocam/Human_vasculature.git)
-* Email: thanhvocam94@gmail.com
+
 
 
 ## 9. License
