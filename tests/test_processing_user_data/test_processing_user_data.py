@@ -13,7 +13,7 @@ def test_create_user_folders():
 
 
 def test_delete_files_in_folder():
-    test_folder = 'test/test_data'
+    test_folder = 'tests/test_data'
     
     with tempfile.TemporaryDirectory() as temp_test_folder:
 
