@@ -11,6 +11,9 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash -l {0}
   
     steps:
       - name: Checkout Code
@@ -25,7 +28,7 @@ jobs:
 
       - name: install dependencies with pip
         run: |
-          source activate ABR
+          conda activate ABR
           pip install -r requirements.txt     
 
       - name: Run Tests
