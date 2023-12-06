@@ -1,41 +1,59 @@
+import os
 import streamlit as st
-from rmbg import remove_background
-import base64
+from PIL import Image
+from images_processing.remove_background import remove_background
 import io
+import base64
 from prepare_model.download_model import download_model
+from processing_user_data.processing_user_data import create_user_folders, get_user_folder
+
 
 def main():
-    model_path = download_model('https://tdp-model.s3.ap-southeast-2.amazonaws.com/ABR_model/ABR_version_1.onnx', 'prepare_model/model')
     st.title(':blue[A]:red[B]:green[R] :sunglasses:')
     with st.form("my-form", clear_on_submit=True):
         images = st.file_uploader("Upload your images", type=None, accept_multiple_files=True)
         submitted = st.form_submit_button("Start!")
 
+    # Create folders for unprocessed and processed images
+    input_images_folder = get_user_folder('processing_user_data/user_data/unprocessed_images')
+    output_images_folder = get_user_folder('processing_user_data/user_data/processed_images')
+    create_user_folders(input_images_folder, output_images_folder)
+
     if submitted and images is not None:
         for i, uploaded_file in enumerate(images):
-            # Get the file content
-            file_content = uploaded_file.read()
+            file_path = os.path.join(input_images_folder, f"image_{i}.png")
+            with open(file_path, 'wb') as f:
+                f.write(uploaded_file.read())
 
-            # Call the remove_background function with the raw content
-            edited_image = remove_background(file_content,model_path)
+    # Images processing
+    model_path = download_model('https://tdp-model.s3.ap-southeast-2.amazonaws.com/ABR_model/ABR_version_1.onnx', 'prepare_model/model')
+    remove_background(input_images_folder, output_images_folder, model_path)
 
+    # Display processed images
+    display_processed_images(input_images_folder, output_images_folder)
+
+def display_processed_images(input_folder, output_folder):
+    if os.path.exists(output_folder):
+        output_files = sorted(os.listdir(output_folder))
+        input_files = sorted(os.listdir(input_folder))
+        for input_img, output_img in zip(input_files, output_files):
             # Display the original and edited images
-            col1_name = f'col1_{i}'
-            col2_name = f'col2_{i}'
-            
-
-            # Use dynamic column names
-            globals()[col1_name], globals()[col2_name] = st.columns(2)
-            with globals()[col1_name]:
-                st.image(uploaded_file, caption=f'Original Image {i+1}',channels="RGB",output_format = "auto")
-            with globals()[col2_name]:
-                st.image(edited_image, caption=f'Edited Image {i+1}',channels="RGB",output_format = "auto")
-                img_data = io.BytesIO()
-                edited_image.save(img_data, format="PNG")
-                img_data_base64 = base64.b64encode(img_data.getvalue()).decode("utf-8")
-
-                download_link = f'<a href="data:image/png;base64,{img_data_base64}" download="Edited Image {i+1}.png">Download image</a>'
+            col1, col2 = st.columns(2)
+            with col1:
+                input_img_path = os.path.join(input_folder, input_img)
+                st.image(input_img_path, caption=f'Original Image', channels="RGB", output_format="auto")
+            with col2:
+                output_img_path = os.path.join(output_folder, output_img)
+                st.image(output_img_path, caption=f'Edited Image: {output_img}', channels="RGB", output_format="auto")
+                download_link = create_download_link(output_img, output_img_path)
                 st.markdown(download_link, unsafe_allow_html=True)
+
+def create_download_link(filename, filepath):
+    img_data = io.BytesIO()
+    edited_image = Image.open(filepath)
+    edited_image.save(img_data, format="PNG")
+    img_data_base64 = base64.b64encode(img_data.getvalue()).decode("utf-8")
+    return f'<a href="data:image/png;base64,{img_data_base64}" download="{filename}">Download image</a>'
 
 if __name__ == "__main__":
     main()
