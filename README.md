@@ -9,12 +9,12 @@ The project aims to design an application for automating background removal imag
 
 U-2-Net is initially trained on the [DUST_TR dataset](http://saliencydetection.net/duts/), consisting of images and masks. View examples:
 
-![Alt text](ILSVRC2012_test_00000022.jpg) ![Alt text](ILSVRC2012_test_00000022.png)
+![Alt text](display_images/ILSVRC2012_test_00000022.jpg) ![Alt text](display_images/ILSVRC2012_test_00000022.png)
     
     
 We continue training with personal datasets structured as follows: 
 
-![Alt text](my_image1.jpg) ![Alt text](my_label1.png)
+![Alt text](display_images/my_image1.jpg) ![Alt text](display_images/my_label1.png)
 
 The trained model, combined with the rembg tool, is used for automatic image background removal.
 
