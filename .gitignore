@@ -14,6 +14,9 @@ test.py
 *.pyc
 *.env
 __pycache__
+dummy_rmbg.py
+streamlit_demo.py
+streamlit_folder.py
 Data_processing/
 
 
