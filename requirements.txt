@@ -5,3 +5,4 @@ rembg
 onnx
 onnxruntime
 rembg[cli]
+pytest
