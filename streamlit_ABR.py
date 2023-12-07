@@ -9,7 +9,8 @@ from processing_user_data.processing_user_data import create_user_folders, get_u
 
 
 def main():
-    st.title(':blue[A]:red[B]:green[R] :sunglasses:')
+    st.set_page_config(page_title="ABR",layout="centered",)
+    st.title(' ✨ :blue[A]:red[B]:green[R] ✨ ')
     with st.form("my-form", clear_on_submit=True):
         images = st.file_uploader("Upload your images", type=None, accept_multiple_files=True)
         submitted = st.form_submit_button("Start!")

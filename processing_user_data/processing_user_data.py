@@ -6,7 +6,7 @@ def create_user_folders(*folders):
     for folder in folders:
         if not os.path.exists(folder):
             os.makedirs(folder)
-            delete_files_in_folder(folder)
+        delete_files_in_folder(folder)
 
 def delete_files_in_folder(folder_path):
     if os.path.exists(folder_path) and os.path.isdir(folder_path):
@@ -16,7 +16,6 @@ def delete_files_in_folder(folder_path):
             try:
                 if os.path.isfile(file_path):
                     os.remove(file_path)
-                    print(f"Deleted: {file_path}")
             except Exception as e:
                 print(f"Error deleting {file_path}: {e}")
 
