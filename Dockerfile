@@ -6,7 +6,7 @@ WORKDIR /app
 
 COPY . /app
 
-RUN apt-get -y update && apt-get install -y fortunes
+RUN pip install -r requirements.txt
 
 CMD [ "streamlit", "run", "streamlit_ABR.py" ]
 
