@@ -19,6 +19,10 @@ streamlit_demo.py
 streamlit_folder.py
 Data_processing/
 .pytest_cache
+.dockerignore
+docker-compose.debug.yml
+docker-compose.yml
+
 
 
 
