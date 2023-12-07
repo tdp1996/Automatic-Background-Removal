@@ -19,9 +19,8 @@ def remove_background(input_folder, output_folder,model_path):
         try:
             # Execute the command
             subprocess.run(command, shell=True, check=True)
-            print(f"Processed: {input_file}")
         except subprocess.CalledProcessError as e:
             print(f"Error processing {input_file}: {e}")
-
+    print(f"Processed all images")
 
 
