@@ -43,8 +43,8 @@ You can upload your images and see the result.
 
 ## 6. Build Docker container
 Steps:
-1. Run docker build -t {image's name} . to build Docker image.  
-2. Run docker run -p {port} {image's name} to build Docker container.
+1. Build Docker image: `docker build -t {image's name}`  
+2. Build Docker container `docker run -p {port} {image's name}` 
 
 ## 7. References: 
 * U-2-Net: https://github.com/xuebinqin/U-2-Net.git
