@@ -41,12 +41,17 @@ You can upload your images and see the result.
   
 * Open your browser and go to http://localhost:5000
 
-## 6. References: 
+## 6. Build Docker container
+Steps:
+1. Run docker build -t {image's name} . to build Docker image.  
+2. Run docker run -p {port} {image's name} to build Docker container.
+
+## 7. References: 
 * U-2-Net: https://github.com/xuebinqin/U-2-Net.git
 * rembg: https://github.com/danielgatis/rembg.git
 * Train your custom model: https://github.com/danielgatis/rembg/issues/193#issuecomment-1055534289
 
-## 7. Contributing
+## 8. Contributing
 ABR is still a work in progress and in alpha. While it is slowly getting more to where we want it, it is going to take quite some time to have every possible feature we want to add. If you are knowledgeable in the field of image processing, feel free to contribute to this project and help us get closer to that goal.
 ### How to Contribute
 * Please fork to your Git account or clone directly the repository [Automatic-Background-Removal](https://github.com/tdp1996/Automatic-Background-Removal.git)
@@ -55,13 +60,13 @@ ABR is still a work in progress and in alpha. While it is slowly getting more to
 If you find a bug or have a feature request, please open an issue and provide detailed information.
 
 
-## 8. Author
+## 9. Author
 * Name: [tdp1996](https://github.com/tdp1996/Automatic-Batch-Editing.git)
 * Email: phuongtd1107@gmail.com
 
 
 
-## 9. License
+## 10. License
 This project is licensed under the [MIT License](https://opensource.org/license/mit/).
   
 
