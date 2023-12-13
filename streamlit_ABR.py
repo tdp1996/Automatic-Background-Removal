@@ -6,7 +6,8 @@ import io
 import base64
 from prepare_model.download_model import download_model
 from processing_user_data.processing_user_data import create_user_folders, get_user_folder
-
+import torch
+from images_processing.increase_resolution import increase_image_resolution
 
 def main():
     st.set_page_config(page_title="ABR",layout="centered",)
@@ -26,12 +27,18 @@ def main():
             with open(file_path, 'wb') as f:
                 f.write(uploaded_file.read())
 
+    # If GPU support, increase image resolution before removing background 
+    if torch.cuda.is_available():
+        IR_model_url = "https://tdp-model.s3.ap-southeast-2.amazonaws.com/RRDB_ESRGAN_x4.pth"
+        input_images_folder = increase_image_resolution(input_images_folder, IR_model_url)
+       
     # Images processing
     model_path = download_model('https://tdp-model.s3.ap-southeast-2.amazonaws.com/ABR_model/ABR_version_1.onnx', 'prepare_model/model')
     remove_background(input_images_folder, output_images_folder, model_path)
 
     # Display processed images
     display_processed_images(input_images_folder, output_images_folder)
+
 
 def display_processed_images(input_folder, output_folder):
     if os.path.exists(output_folder):
