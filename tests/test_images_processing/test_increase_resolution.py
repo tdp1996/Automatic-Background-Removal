@@ -3,7 +3,6 @@ from prepare_model.download_model import download_model
 import tempfile
 import shutil
 import os
-import torch
 
 def test_increase_image_resolution():
     with tempfile.TemporaryDirectory() as temp_model_folder:
