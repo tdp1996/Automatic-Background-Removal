@@ -1,11 +1,11 @@
 import os
 import streamlit as st
 from PIL import Image
-from images_processing.remove_background import remove_background
+from src.remove_background import remove_background
 import io
 import base64
-from prepare_model.download_model import download_model
-from processing_user_data.processing_user_data import create_user_folders, get_user_folder
+from src.download_model import download_model
+from src.processing_user_data import create_user_folders, get_user_folder
 
 
 def main():

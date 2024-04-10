@@ -1,7 +1,7 @@
-from processing_user_data.processing_user_data import create_user_folders, delete_files_in_folder, get_user_folder
 import tempfile
 import shutil
 import os
+from src.processing_user_data import create_user_folders, delete_files_in_folder, get_user_folder
 
 def test_create_user_folders():
     
@@ -13,7 +13,7 @@ def test_create_user_folders():
 
 
 def test_delete_files_in_folder():
-    test_folder = 'tests/test_data'
+    test_folder = 'tests/data_test'
     
     with tempfile.TemporaryDirectory() as temp_test_folder:
 
