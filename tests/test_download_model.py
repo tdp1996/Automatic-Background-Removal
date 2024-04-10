@@ -1,4 +1,3 @@
-import os
 import tempfile
 from src.download_model import download_model
 

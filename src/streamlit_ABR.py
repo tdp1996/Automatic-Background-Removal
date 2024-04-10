@@ -5,7 +5,7 @@ from images_processing.remove_background import remove_background
 import io
 import base64
 from download_model import download_model
-from processing_user_data import create_user_folders, get_user_folder
+from users_data_preprocessing import create_user_folders, get_user_folder
 import torch
 from images_processing.increase_resolution import increase_image_resolution
 
