@@ -3,7 +3,7 @@ import cv2
 import glob
 import numpy as np
 import torch
-import images_processing.RRDBNet as arch 
+from images_processing.RRDBNet import RRDBNet as arch 
 import os.path as osp
 
 def increase_image_resolution(input_image_folder, model_path):   

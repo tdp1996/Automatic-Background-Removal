@@ -1,4 +1,4 @@
-from prepare_model.download_model import download_model
+from download_model import download_model
 import os
 import tempfile
 

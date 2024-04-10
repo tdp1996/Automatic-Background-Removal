@@ -1,5 +1,5 @@
 from images_processing.increase_resolution import increase_image_resolution
-from prepare_model.download_model import download_model
+from download_model import download_model
 import tempfile
 import shutil
 import os

@@ -1,4 +1,4 @@
-from processing_user_data.processing_user_data import create_user_folders, delete_files_in_folder, get_user_folder
+from processing_user_data import create_user_folders, delete_files_in_folder, get_user_folder
 import tempfile
 import shutil
 import os
