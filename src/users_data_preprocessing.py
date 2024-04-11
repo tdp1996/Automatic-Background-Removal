@@ -3,7 +3,7 @@ import uuid
 import streamlit as st
 
 
-def get_user_folder(folder_name: str) -> str:
+def get_unique_user_folder(folder_name: str) ->str:
     """
     Get the user-specific folder path based on the provided folder name.
 
@@ -38,7 +38,7 @@ def create_user_folders(*folders: str):
         delete_files_in_folder(folder)
 
 
-def delete_files_in_folder(folder_path):
+def delete_files_in_folder(folder_path: str):
     """
     Delete all files within the specified folder.
 
@@ -47,17 +47,10 @@ def delete_files_in_folder(folder_path):
 
     Returns:
     - None
-
-    Notes:
-    - If the folder does not exist or is not a directory, the function will do nothing.
-    - Any errors encountered during file deletion will be printed to the console.
     """
     if os.path.exists(folder_path) and os.path.isdir(folder_path):
         files = os.listdir(folder_path)
         for file in files:
             file_path = os.path.join(folder_path, file)
-            try:
-                if os.path.isfile(file_path):
-                    os.remove(file_path)
-            except Exception as e:
-                print(f"Error deleting {file_path}: {e}")
+            if os.path.isfile(file_path):
+                os.remove(file_path)

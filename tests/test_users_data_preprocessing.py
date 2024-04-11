@@ -1,7 +1,7 @@
 import os
 import shutil
 import tempfile
-from src.users_data_preprocessing import create_user_folders, delete_files_in_folder, get_user_folder
+from src.users_data_preprocessing import create_user_folders, delete_files_in_folder, get_unique_user_folder
 
 def test_create_user_folders():   
     with tempfile.TemporaryDirectory() as temp_folder_1, tempfile.TemporaryDirectory() as temp_folder_2:
@@ -22,5 +22,5 @@ def test_delete_files_in_folder():
 
 def test_get_user_folder():
     folder_name = 'user_data/unprocessed_images'
-    folder_path = get_user_folder(folder_name)
+    folder_path = get_unique_user_folder(folder_name)
     assert folder_path.startswith('user_data/unprocessed_images')

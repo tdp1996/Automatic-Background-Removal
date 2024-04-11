@@ -1,8 +1,9 @@
 import os
-import gdown
 from pathlib import Path
+import gdown
 
-def download_model(model_folder: Path) ->Path:
+
+def download_model(model_folder: str) ->str:
     """
     Download a model from Google Drive and save it to the specified folder.
 

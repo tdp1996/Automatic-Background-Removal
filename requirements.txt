@@ -5,5 +5,4 @@ onnx
 onnxruntime
 rembg[cli] # rembg[cli,gpu] if GPU support
 pytest
-torch
 gdown

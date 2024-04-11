@@ -1,7 +1,7 @@
 import os
 import streamlit as st
 from PIL import Image
-from images_processing.remove_background import remove_background
+from src.remove_background import remove_background
 import io
 import base64
 from download_model import download_model
