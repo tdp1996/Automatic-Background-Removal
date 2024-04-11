@@ -48,7 +48,6 @@ Steps:
 
 ## 7. References: 
 * U-2-Net: https://github.com/xuebinqin/U-2-Net.git
-* ESRGAN: https://github.com/xinntao/ESRGAN
 * rembg: https://github.com/danielgatis/rembg.git
 * Train your custom model: https://github.com/danielgatis/rembg/issues/193#issuecomment-1055534289
 
