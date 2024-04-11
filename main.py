@@ -1,7 +1,6 @@
 import base64
 import io
 import os
-from pathlib import Path
 from PIL import Image
 import streamlit as st
 from src.download_model import download_model
