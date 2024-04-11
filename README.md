@@ -37,7 +37,7 @@ You can upload your images and see the result.
 
 ## 5. Usage
  
-* Run the application: `streamlit run streamlit_ABR.py`
+* Run the application: `streamlit run main.py`
   
 * Open your browser and go to http://localhost:5000
 

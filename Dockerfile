@@ -8,6 +8,8 @@ COPY . /app
 
 RUN pip install -r requirements.txt
 
-CMD [ "streamlit", "run", "src/streamlit_ABR.py" ]
+
+CMD [ "streamlit", "run", "main.py" ]
+
 
 EXPOSE 8502
