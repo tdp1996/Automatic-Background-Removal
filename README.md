@@ -4,7 +4,7 @@
 ## 1. Introduction 
 The project aims to design an application for automating background removal image process. Users can simply upload their images and then choose their desired result to download.
 
-#### Project Components: [U-2-Net](https://github.com/xuebinqin/U-2-Net.git), [ESRGAN](https://github.com/xinntao/ESRGAN), [rembg](https://github.com/danielgatis/rembg.git)
+#### Project Components: [U-2-Net](https://github.com/xuebinqin/U-2-Net.git), [rembg](https://github.com/danielgatis/rembg.git)
 #### We integrate the U-2-Net model training with personal datasets and utilize the rembg tool.
 
 U-2-Net is initially trained on the [DUST_TR dataset](http://saliencydetection.net/duts/), consisting of images and masks. View examples:
@@ -17,7 +17,6 @@ We continue training with personal datasets structured as follows:
 ![Alt text](display_images/my_image1.jpg) ![Alt text](display_images/my_label1.png)
 
 The trained model, combined with rembg tool, is used for automatic image background removal.
-#### Note: If you have GPU support, combine with [ESRGAN](https://github.com/xinntao/ESRGAN) to increase resolution and output image quality.
 
 
 ## 2. Features
@@ -49,7 +48,6 @@ Steps:
 
 ## 7. References: 
 * U-2-Net: https://github.com/xuebinqin/U-2-Net.git
-* ESRGAN: https://github.com/xinntao/ESRGAN
 * rembg: https://github.com/danielgatis/rembg.git
 * Train your custom model: https://github.com/danielgatis/rembg/issues/193#issuecomment-1055534289
 
