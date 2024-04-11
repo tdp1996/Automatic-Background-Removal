@@ -1,13 +1,12 @@
-import os
-import streamlit as st
-from PIL import Image
-from src.remove_background import remove_background
-import io
 import base64
-from download_model import download_model
-from users_data_preprocessing import create_user_folders, get_user_folder
-import torch
-from images_processing.increase_resolution import increase_image_resolution
+import io
+import os
+from pathlib import Path
+from PIL import Image
+import streamlit as st
+from src.download_model import download_model
+from src.remove_background import remove_background
+from src.users_data_preprocessing import create_user_folders, get_unique_user_folder
 
 
 def main():
@@ -23,11 +22,11 @@ def main():
         submitted = st.form_submit_button("Start!")
 
     # Create folders for unprocessed and processed images
-    input_images_folder = get_user_folder(
-        "processing_user_data/user_data/unprocessed_images"
+    input_images_folder = get_unique_user_folder(
+        "user_data/unprocessed_images"
     )
-    output_images_folder = get_user_folder(
-        "processing_user_data/user_data/processed_images"
+    output_images_folder = get_unique_user_folder(
+        "user_data/processed_images"
     )
     create_user_folders(input_images_folder, output_images_folder)
 
@@ -37,20 +36,8 @@ def main():
             with open(file_path, "wb") as f:
                 f.write(uploaded_file.read())
 
-    # If GPU support, increase image resolution before removing background
-    if torch.cuda.is_available():
-        IR_model_url = (
-            "https://tdp-model.s3.ap-southeast-2.amazonaws.com/RRDB_ESRGAN_x4.pth"
-        )
-        input_images_folder = increase_image_resolution(
-            input_images_folder, IR_model_url
-        )
-
     # Images processing
-    model_path = download_model(
-        "https://tdp-model.s3.ap-southeast-2.amazonaws.com/ABR_model/ABR_version_1.onnx",
-        "prepare_model/model",
-    )
+    model_path = download_model("model")
     remove_background(input_images_folder, output_images_folder, model_path)
 
     # Display processed images
