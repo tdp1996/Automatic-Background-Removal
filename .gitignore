@@ -5,26 +5,24 @@ bin-release/
 [Bb]in/
 
 # Other files and folders
-streatlit_dung.py
 .settings/
 *.egg-info
 test.py
-*.json
-.txt
-*.pyc
-*.env
-__pycache__
-dummy_rmbg.py
-streamlit_demo.py
-streamlit_folder.py
-Data_processing/
-.pytest_cache
+
+
+
+
+
+#docker
 .dockerignore
 docker-compose.debug.yml
 docker-compose.yml
+.devcontainer
 
-
-
+#pycache
+__pycache__
+*.pyc
+.pytest_cache
 
 # Executables
 *.swf
@@ -35,9 +33,8 @@ docker-compose.yml
 # Project files, i.e. `.project`, `.actionScriptProperties` and `.flexProperties`
 # should NOT be excluded as they contain compiler settings and other important
 # information for Eclipse / Flash Builder.
-Data/
 dummy
-HAT/
+
 
 #vscode
 .vscode
