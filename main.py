@@ -1,10 +1,7 @@
-import base64
-import io
 import os
-from PIL import Image
 import streamlit as st
+from src.image_processing import display_processed_images, remove_background
 from src.download_model import download_model
-from src.remove_background import remove_background
 from src.users_data_preprocessing import create_user_folders, get_unique_user_folder
 
 
@@ -41,41 +38,6 @@ def main():
 
     # Display processed images
     display_processed_images(input_images_folder, output_images_folder)
-
-
-def display_processed_images(input_folder, output_folder):
-    if os.path.exists(output_folder):
-        output_files = sorted(os.listdir(output_folder))
-        input_files = sorted(os.listdir(input_folder))
-        for input_img, output_img in zip(input_files, output_files):
-            # Display the original and edited images
-            col1, col2 = st.columns(2)
-            with col1:
-                input_img_path = os.path.join(input_folder, input_img)
-                st.image(
-                    input_img_path,
-                    caption=f"Original Image",
-                    channels="RGB",
-                    output_format="auto",
-                )
-            with col2:
-                output_img_path = os.path.join(output_folder, output_img)
-                st.image(
-                    output_img_path,
-                    caption=f"Edited Image: {output_img}",
-                    channels="RGB",
-                    output_format="auto",
-                )
-                download_link = create_download_link(output_img, output_img_path)
-                st.markdown(download_link, unsafe_allow_html=True)
-
-
-def create_download_link(filename, filepath):
-    img_data = io.BytesIO()
-    edited_image = Image.open(filepath)
-    edited_image.save(img_data, format="PNG")
-    img_data_base64 = base64.b64encode(img_data.getvalue()).decode("utf-8")
-    return f'<a href="data:image/png;base64,{img_data_base64}" download="{filename}">Download image</a>'
 
 
 if __name__ == "__main__":
